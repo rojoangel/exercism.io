@@ -8,7 +8,7 @@ function distance($strandA, $strandB)
         return 0;
     }
 
-    return areDifferent(substr($strandA, 0, 1), substr($strandB, 0, 1))
+    return (int) areDifferent(substr($strandA, 0, 1), substr($strandB, 0, 1))
         + distance(substr($strandA, 1), substr($strandB, 1));
 }
 
@@ -26,9 +26,9 @@ function guardSameStrandLength($strandA, $strandB)
 /**
  * @param $nucleotideA
  * @param $nucleotideB
- * @return int
+ * @return bool
  */
 function areDifferent($nucleotideA, $nucleotideB)
 {
-    return (int)!($nucleotideA === $nucleotideB);
+    return $nucleotideA !== $nucleotideB;
 }
