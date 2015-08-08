@@ -26,7 +26,7 @@ function guardSameStrandLength($strandA, $strandB)
 /**
  * @param $nucleotideA
  * @param $nucleotideB
- * @return int
+ * @return bool
  */
 function areDifferent($nucleotideA, $nucleotideB)
 {
