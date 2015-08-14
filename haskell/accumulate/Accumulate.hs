@@ -1,5 +1,6 @@
 module Accumulate (accumulate) where
 
 accumulate :: (a->b) -> [a] -> [b]
-accumulate f xs = [ f x | x <- xs ] 
+accumulate _ [] = []
+accumulate f (x:xs) = f x : accumulate f xs 
 
