@@ -1,9 +1,8 @@
 module DNA (toRNA) where
 
 toRNA :: String -> String
-toRNA [] = []
-toRNA (x:xs) = transcribe x : toRNA xs
-  where transcribe y = case y of 'C' -> 'G'
+toRNA xs = map transcribe xs
+  where transcribe x = case x of 'C' -> 'G'
                                  'G' -> 'C'
                                  'A' -> 'U'
                                  'T' -> 'A'
