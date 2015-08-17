@@ -1,9 +1,7 @@
 module Gigasecond where
 
-import Data.Time.Clock (NominalDiffTime, UTCTime, addUTCTime)
-
-gigaSecond :: NominalDiffTime
-gigaSecond = 1.0e9
+import Data.Time.Clock (UTCTime, addUTCTime)
 
 fromDay :: UTCTime -> UTCTime
-fromDay day = addUTCTime gigaSecond day
+fromDay = addUTCTime gigaSecond
+    where gigaSecond = 1.0e9
