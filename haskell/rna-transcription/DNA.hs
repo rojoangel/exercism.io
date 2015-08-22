@@ -2,7 +2,7 @@ module DNA (toRNA) where
 
 import Data.Maybe
 
-toRNA :: [Char] -> [Char]
+toRNA :: String -> String
 toRNA = mapMaybe $ flip lookup transcriptions
     where transcriptions = [('C', 'G'),
                             ('G', 'C'),
