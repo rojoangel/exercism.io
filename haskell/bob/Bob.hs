@@ -9,5 +9,5 @@ responseFor xs
     | question  = "Sure."
     | otherwise = "Whatever."
     where silence  = all isSpace xs
-          yell     = (any isAlpha xs) && not (any isLower xs)
+          yell     = any isAlpha xs && not (any isLower xs)
           question = last xs == '?'
