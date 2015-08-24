@@ -1,6 +1,6 @@
 module DNA (count, nucleotideCounts) where
 
-import Data.Map
+import Data.Map.Strict
 
 type Nucleotide = Char
 
@@ -9,8 +9,7 @@ validNucleotides = "ACGT"
 
 count :: Nucleotide -> [Nucleotide] -> Integer
 count a xs = sum [1 | x <- xs, isValidNucleotide a, isValidNucleotide x, x == a]
-  where
-        isValidNucleotide b
+  where isValidNucleotide b
           | b `elem` validNucleotides = True
           | otherwise                 = error $ "invalid nucleotide " ++ show b
 
