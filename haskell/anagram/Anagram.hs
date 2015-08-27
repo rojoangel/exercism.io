@@ -4,6 +4,8 @@ import Data.List (sort)
 import Data.Char (toLower)
 
 anagramsFor :: String -> [String] -> [String]
-anagramsFor s xs = [x | x <- xs, not $ itsOwnAnagram s x, isAnagram s x]
-  where isAnagram x y = sort (map toLower x) == sort (map toLower y)
-        itsOwnAnagram x y = map toLower x == map toLower y
+anagramsFor s xs = [x | x <- xs, not (isSameWord x) && isAnagram x]
+  where toLowerS = map toLower s
+        sortedToLowerS = sort toLowerS
+        isSameWord x = toLowerS == map toLower x
+        isAnagram x = sortedToLowerS == sort (map toLower x)
