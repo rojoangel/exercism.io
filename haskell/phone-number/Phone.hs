@@ -13,10 +13,10 @@ number xs
           invalidNumber = "0000000000"
 
 areaCode :: String -> String
-areaCode xs= fst . splitAt 3 $ number xs
+areaCode xs= take 3 $ number xs
 
 prettyPrint :: String -> String
 prettyPrint xs = "(" ++ areaCode xs ++ ") " ++ prefix ++ "-" ++ lineNumber
-  where prefix      = fst . splitAt 3 $ sevenDigits
-        lineNumber  = snd . splitAt 3 $ sevenDigits
-        sevenDigits = snd . splitAt 3 $ number xs
+  where prefix      = take 3 sevenDigits
+        lineNumber  = drop 3 sevenDigits
+        sevenDigits = drop 3 $ number xs
