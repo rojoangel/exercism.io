@@ -2,7 +2,10 @@ module Phone (areaCode, number, prettyPrint) where
 
 import Data.Char (isDigit)
 
-number :: String -> String
+type PhoneNumber = String
+type AreaCode    = String
+
+number :: String -> PhoneNumber
 number xs
   | isAValid10DigitPhoneNum = cleanedUpNum
   | isAValid11DigitPhoneNum = tail cleanedUpNum
@@ -13,10 +16,10 @@ number xs
           cleanedUpNumLength      = length cleanedUpNum
           invalidNumber           = "0000000000"
 
-areaCode :: String -> String
+areaCode :: PhoneNumber -> AreaCode
 areaCode xs = take 3 $ number xs
 
-prettyPrint :: String -> String
+prettyPrint :: PhoneNumber -> String
 prettyPrint xs = "(" ++ areaCode xs ++ ") " ++ prefix ++ "-" ++ lineNumber
   where prefix              = take 3 prefixedLineNumber
         lineNumber          = drop 3 prefixedLineNumber
