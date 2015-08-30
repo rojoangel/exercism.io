@@ -4,16 +4,17 @@ import Data.Char (isDigit)
 
 number :: String -> String
 number xs
-  | cleanedUpNumLength == 10      = cleanedUpNum
-  | cleanedUpNumLength == 11
-    &&  head cleanedUpNum == '1'  = tail cleanedUpNum
-  | otherwise                     = invalidNumber
-    where cleanedUpNum = filter isDigit xs
-          cleanedUpNumLength = length cleanedUpNum
-          invalidNumber = "0000000000"
+  | isAValid10DigitPhoneNum = cleanedUpNum
+  | isAValid11DigitPhoneNum = tail cleanedUpNum
+  | otherwise               = invalidNumber
+    where isAValid10DigitPhoneNum = cleanedUpNumLength == 10
+          isAValid11DigitPhoneNum = cleanedUpNumLength == 11 &&  head cleanedUpNum == '1'
+          cleanedUpNum            = filter isDigit xs
+          cleanedUpNumLength      = length cleanedUpNum
+          invalidNumber           = "0000000000"
 
 areaCode :: String -> String
-areaCode xs= take 3 $ number xs
+areaCode xs = take 3 $ number xs
 
 prettyPrint :: String -> String
 prettyPrint xs = "(" ++ areaCode xs ++ ") " ++ prefix ++ "-" ++ lineNumber
