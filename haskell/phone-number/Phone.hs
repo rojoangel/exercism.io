@@ -21,6 +21,4 @@ areaCode xs = take 3 $ number xs
 
 prettyPrint :: PhoneNumber -> String
 prettyPrint xs = "(" ++ areaCode xs ++ ") " ++ prefix ++ "-" ++ lineNumber
-  where prefix              = take 3 prefixedLineNumber
-        lineNumber          = drop 3 prefixedLineNumber
-        prefixedLineNumber  = drop 3 $ number xs
+  where (prefix, lineNumber) = splitAt 3 . drop 3 . number $ xs
